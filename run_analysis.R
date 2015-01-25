@@ -11,8 +11,14 @@
 ##    independent tidy data set with the average of each 
 ##    variable for each activity and each subject.
 ##====================================================================
+#download and unzip data
+if(!file.exists("GCD")){dir.create("GCD")}#create directory
+fileUrl<- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+download.file(fileUrl, destfile = "./GCD/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",mode = "wb")##download file from internet
+unzip("./GCD/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip", list = FALSE, overwrite = FALSE, exdir = "./GCD")
+
 ##===1. Merges the training and the test sets to create one data set=
-#get names of variables used the training and the test sets
+#get names of variables used in the training and the test sets
 features<-read.table("./GCD/UCI HAR Dataset/features.txt",header = FALSE)
 names(features)=c("id_features","features")
 #get names of activity
@@ -103,5 +109,4 @@ sub_act_avg <- dcast(melt_Clean_HCI, subject+activity~variable, mean)
 #arranged-it if not
 #sub_act_avg<-arrange(sub_act_avg, subject, activity)
 #write txt file to upload in Getting and Cleaning Data Course Project,the separator is ","
-write.table(Clean_HCI,file="./GCD/gcd_data.txt",sep = ",",row.name=FALSE)
-
+write.table(sub_act_avg,file="./GCD/gcd_data.txt",sep = ",",row.name=FALSE)
