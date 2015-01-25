@@ -1,5 +1,3 @@
- a code book that describes the variables, the data, and any transformations or work that you performed to clean up the data
-
 For each record it is provided:
 ======================================
 
@@ -56,3 +54,9 @@ frequency-body-accelerometer-magnitude-std
 frequency-body-body-accelerometer-jerk-magnitude-std
 frequency-body-body-gyroscope-magnitude-std
 frequency-body-body-gyroscope-jerk-magnitude-std
+
+
+The set of variables that were estimated from these signals are: 
+
+mean: Mean value
+std: Standard deviation
