@@ -11,9 +11,9 @@ For each record it is provided:
  These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
  
-subject
-activity
-time-body-accelerometer-mean-XYZ
+**subject
+**activity
+**time-body-accelerometer-mean-XYZ
 time-gravity-accelerometer-mean-XYZ
 time-body-accelerometer-jerk-mean-XYZ
 time-body-gyroscope-mean-XYZ
