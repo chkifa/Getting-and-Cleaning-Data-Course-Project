@@ -1,14 +1,40 @@
 ## Getting and Cleaning Data Course Project
-README.md in the repo describing how the script works
+The run_analysis.R works according to the steps below:
 
+####  Download data set from internet location and unzip it in the working directory (./GCD)
+####	Select sets to read for merging:
 
-####	Select sets to read in for merging:
-read in the subject ids, read in the activity ids, read in the feature values for test data, and concatenate data produced in previous step,
-the same operation for train data, finally we merged all data in one set.
-####	Extracting the required features:
-select from merged data the first two columns, and any others that contain the phrases "mean" or "std" in isolation, merge data produced for each operation
-####	Naming the activities in the data set:
-merge the data set produced in 2 with activity_labels by id_activity to get the descriptive activity names in the data set.
-####	Appropriately labels the data set with descriptive variable names
-rename all the variable with the appropriate labels dudected from "features_info.txt"
-####	tidy data set with the average of each variable for each activity and each subject.
+in test set 
+Read the "features.txt", to read the list of variables' name.
+Concatenate variables’ names to "X_test" 
+Attributes variables’ names，to "subject_test"，"Y_test"
+Merge "X_test"，"subject_test"，"Y_test" to "XYZ_test"
+
+in train set
+Read the "features.txt", to read the list of variables' name.
+Concatenate variables’ names to "X_train" 
+Attributes variables’ names，to "subject_train"，"Y_train"
+Merge "X_train"，"subject_train"，"Y_train" to "XYZ_train"
+
+Merges the training and the test sets to create one data set and order it by subject.
+
+####  Extracts only the measurements on the mean and standard deviation for each measurement.
+
+Find out which names include target strings including "mean" and "std"
+Merge and transpose Extracts measurements in one vector
+Read only data for measurement fond previously from global data set
+Combine it with "subject" and "activity" with right names.
+
+####  Use descriptive activity names in "activity_labels.txt" to name the activities in the data set
+Merge the data set containing the activity names, loaded previously in first step, with extracted data set.
+
+####  Appropriately label the data set with descriptive variable names.
+Extract the old names of variables from the extracted data set
+Use regular expressions and "gsub()" function to update the names to more descriptive ones
+Replace the variables’ names with the updated vector of names in the extracted data set
+
+####  tidy data set with the average of each variable for each activity and each subject.
+
+Melt the data set from previous step with the id of "subject" and "activity"
+Then "dcast()" the melted data with both "subject" and "activity", calculate the mean of each variables in the data set
+write the latest data set to a txt file called "gcd_data.txt"
