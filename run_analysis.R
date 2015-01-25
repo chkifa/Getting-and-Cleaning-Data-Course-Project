@@ -102,6 +102,6 @@ sub_act_avg <- dcast(melt_Clean_HCI, subject+activity~variable, mean)
 
 #arranged-it if not
 #sub_act_avg<-arrange(sub_act_avg, subject, activity)
-#write txt file to upload in Getting and Cleaning Data Course Project
+#write txt file to upload in Getting and Cleaning Data Course Project,the separator is ","
 write.table(Clean_HCI,file="./GCD/gcd_data.txt",sep = ",",row.name=FALSE)
 
